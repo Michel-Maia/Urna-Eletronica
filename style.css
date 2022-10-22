@@ -107,6 +107,12 @@ body {
     font-size: 25px;
 }
 
+.pisca {
+    animation-name: pisca;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
 .divisao-1-4 {
     flex: 1;
     line-height: 30px;
@@ -115,13 +121,44 @@ body {
 
 .divisao-1-right {
     width: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 10px;
 }
+
+.divisao-1-image {
+    border: 1px solid #000;
+    background-color: #fff;
+    text-align: center;
+    font-size: 14px;
+}
+
+.divisao-1-image img {
+    width: 100%;
+}
+
+.divisao-1-image.small {
+    width: 70%;
+    font-size: 10px;
+   
+}
+
+
 
 .divisao-2 {
     height: 50px;
     font-size: 15px;
     border-top: 2px solid #000;
     padding-left: 10px;
+}
+
+
+@keyframes pisca {
+    0% { opacity: 0.2;}
+    50% { opacity: 1;}
+    100% { opacity: 0.2;}
+  
 }
 
 
