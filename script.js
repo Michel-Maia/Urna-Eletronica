@@ -7,7 +7,8 @@ let numeros = document.querySelector('.divisao-1-3');
 
 let etapaAtual = 0;
 let numero = '';
-let branco = false;
+let votoBranco = false;
+let votos = [];
 let corrigir = true;
 
 function comecarEtapa() {
@@ -46,11 +47,11 @@ function atualizaInterface() {
         }
     });
 
-    seuVotoPara.style.display = 'block';
-    aviso.style.display = 'block';
-
     if(candidato.length > 0) {
         candidato = candidato[0];
+        seuVotoPara.style.display = 'block';
+        aviso.style.display = 'block';
+
         descricao.innerHTML = `Nome: ${candidato.nome} <br> Partido: ${candidato.partido} <br>`;
         if(candidato.vice !== undefined){
             descricao.innerHTML += `Vice: ${candidato.vice}`;
@@ -60,11 +61,15 @@ function atualizaInterface() {
         for(const i in candidato.fotos) {
             if(candidato.fotos[i].small) {
                 fotosHtml += `<div class="img/${candidato.fotos[i].url}" alt""> ${candidato.fotos[i].legenda}</div>`;
+            } else {
+                fotosHtml += `<div class="img/${candidato.fotos[i].url}" alt""> ${candidato.fotos[i].legenda}</div>`;
             }
         }
 
         lateral.innerHTML = fotosHtml;
     } else {
+        seuVotoPara.style.display = 'block';
+        aviso.style.display = 'block';
         descricao.innerHTML = '<div class="aviso_grande pisca"><br>VOTO NULO</div>';
     }
 
@@ -89,7 +94,7 @@ function clicou(n) {
 function branco() {
     //alert("Clicou em BRANCO");
     if(numero === '') {
-        branco = true;
+        votoBranco = true;
         seuVotoPara.style.display = 'block';
         aviso.style.display = 'block';
         numeros.innerHTML = '';
@@ -114,10 +119,18 @@ function confirma() {
 
     if(votoBranco) {
         votoConfirmado = true;
-        console.log('Confirmando como voto Branco');
+        votos.push({
+            etapa: etapas[etapaAtual].titulo,
+            voto: 'branco'
+        });
+        //console.log('Confirmando como voto Branco');
     } else if(numero.length === etapa.numeros) {
         votoConfirmado = true;
-        console.log('Confirmando como '+ numero);
+        //console.log('Confirmando como '+ numero);
+        votos.push({
+            etapa: etapas[etapaAtual].titulo,
+            voto: numero
+        });
     }
 
     if(votoConfirmado) {
@@ -125,7 +138,7 @@ function confirma() {
         if(etapas[etapaAtual] !== undefined) {
             comecarEtapa();
         } else {
-            corrigir = false;
+           // corrigir = false;
             document.querySelector('.tela').innerHTML = '<div class="aviso_gigante pisca">FIM</div>';
         }
     }
