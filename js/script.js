@@ -60,9 +60,9 @@ function atualizaInterface() {
         let fotosHtml = '';
         for(const i in candidato.fotos) {
             if(candidato.fotos[i].small) {
-                fotosHtml += `<div class="images/${candidato.fotos[i].url}" alt""> ${candidato.fotos[i].legenda}</div>`;
+                fotosHtml += `<div class="image/${candidato.fotos[i].url}" alt""> ${candidato.fotos[i].legenda}</div>`;
             } else {
-                fotosHtml += `<div class="images/${candidato.fotos[i].url}" alt""> ${candidato.fotos[i].legenda}</div>`;
+                fotosHtml += `<div class="image/${candidato.fotos[i].url}" alt""> ${candidato.fotos[i].legenda}</div>`;
             }
         }
 
