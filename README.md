@@ -4,9 +4,9 @@
 
 
 Desenvolvido para aprendizado. Realizado projeto Urna eletrônica. 
+* melhorias em andamento 
 
 
-[🔗 Clique aqui para acessar] (https://michel-maia.github.io/Urna-Eletronica/)
 
 
 ## 💻 Tecnologias
